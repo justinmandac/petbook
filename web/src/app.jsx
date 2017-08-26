@@ -1,13 +1,20 @@
 import React, {Component} from 'react';
 import {GetProfiles} from './services/profiles.service';
 import HomePage from './page.home';
+import { HashRouter as Router, Route } from 'react-router-dom';
+
+const ProfilePage = () => (
+  <div className="profile-page page">
+    Profile
+  </div>
+);
 
 export default class App extends Component {
   constructor() {
     super();
     this.state = {
       userId: 0,
-      profiles: [],
+      profiles: [], 
     };
   }
 
@@ -22,10 +29,23 @@ export default class App extends Component {
   render() {
     const {profiles} = this.state;
     return (
-      <div id="App" className="app">  
-        <HomePage profiles={profiles} />
-        <button onClick={this.loadProfiles.bind(this)}>Load</button>
-      </div>
+      <Router>
+        <div id="App" className="app">  
+          <Route path="/"
+            exact
+            component={
+              () => 
+                <HomePage profiles={profiles}
+                  clickHandler={this.loadProfiles.bind(this)}
+                />
+              }
+          />
+          <Route 
+            path="/profile"
+            component={ProfilePage}
+          />
+        </div>
+      </Router>
     );
   }
 }
