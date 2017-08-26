@@ -1,13 +1,8 @@
 import React, {Component} from 'react';
 import {GetProfiles} from './services/profiles.service';
 import HomePage from './page.home';
+import ProfilePage from './page.profile';
 import { HashRouter as Router, Route } from 'react-router-dom';
-
-const ProfilePage = () => (
-  <div className="profile-page page">
-    Profile
-  </div>
-);
 
 export default class App extends Component {
   constructor() {
@@ -42,7 +37,10 @@ export default class App extends Component {
           />
           <Route 
             path="/profile"
-            component={ProfilePage}
+            component={
+              () => 
+               <ProfilePage />
+            }
           />
         </div>
       </Router>
