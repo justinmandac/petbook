@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "node node_modules/webpack/bin/webpack",
+    "serve:dev" : "node node_modules/webpack-dev-server/bin/webpack-dev-server --content-base=wwww/",
     "test": "node node_modules/mocha/bin/mocha --compilers js:babel-core/register --recursive ./web/src/**/*.spec.js"
   },
   "author": "",
