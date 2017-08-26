@@ -10,10 +10,12 @@ export function GetProfiles(userId) {
     return new Promise((resolve, reject) => {
         resolve([
             {
+                id: 1,
                 name: 'Bochog',
                 typebreed: 'Mongrel',
             },
             {
+                id: 2,
                 name: 'Kongking',
                 typebreed: 'Chow Chow',
             },
@@ -29,6 +31,7 @@ export function GetProfiles(userId) {
 export function GetProfile(userId, profileId) {
     return new Promise((resolve, reject) => {
         resolve({
+            id: 1,
             name: 'Bochog',
             birthday: '2010-11-05',
             profilePhoto: '',
