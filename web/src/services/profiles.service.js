@@ -31,6 +31,7 @@ export function GetProfile(userId, profileId) {
         resolve({
             name: 'Bochog',
             birthday: '2010-11-05',
+            profilePhoto: '',
             description: '',
             dietaryNotes: '',
             typebreed: 'Mongrel',
