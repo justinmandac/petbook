@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build" : "node node_modules/webpack/bin/webpack",
     "test": "node node_modules/mocha/bin/mocha --compilers js:babel-core/register --recursive ./web/src/**/*.spec.js"
   },
   "author": "",
