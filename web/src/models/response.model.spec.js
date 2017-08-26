@@ -8,8 +8,22 @@ describe('response.model',() => {
       message: 'hello',
       output: null,
     };
-
-    assert.isOk(new Response());
+    const noParamsResponse = new Response();
+    
+    assert.isOk(noParamsResponse);
     assert.isOk(new Response(sampleResponse));
+  });
+
+  it('should return the received message & set defaults', () => {
+    const sample = {
+      err: 1,
+      message: 'foo',
+      output: { foo: '', bar: 1, baz: 2, },
+    };
+    const response = new Response(sample);
+    const defaultResponse = new Response();
+
+    assert.equal('', defaultResponse.message);
+    assert.equal(sample.message, response.message);
   });
 });

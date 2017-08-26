@@ -10,7 +10,7 @@ export const ERR_CODES = {
 };
 
 /**
- * @param {{ error: number, message: string, output: T }} response JSON retrieved from the server.
+ * @param {{ error: number, message: string, output: T }} response Parsed JSON response.
  *    error: error codes defined in ERR_CODES enum,
  *    message: server-sent message,
  *    output: output data.
@@ -42,7 +42,10 @@ Response.prototype.GetData = function() {
     return this.output;
 };
 
-function CreateResponseObject(response) {
+/** @param {string} response JSON response
+ *  @return {!Response}
+ */
+export function CreateResponseObject(response) {
   try {
     const {error, message, output} = JSON.parse(response);
   
@@ -56,6 +59,7 @@ function CreateResponseObject(response) {
     return new Response(malformedResponse);
   }  
 }
+
 
 export default Response;
 
