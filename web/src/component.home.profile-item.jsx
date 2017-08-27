@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function ProfileItem({
   id,
@@ -7,10 +8,12 @@ export default function ProfileItem({
   onClick = () => {}}) {
   
     return (
-    <div className="profile-item" onClick={() => {
-        onClick(id);
-      }}>
-      {name}, {typebreed}
-    </div>
+      <Link to={{
+        pathname :"/profile/" + id
+      }} replace>
+        <div className="profile-item">
+          {name}, {typebreed}
+        </div>
+      </Link>
   );
 }

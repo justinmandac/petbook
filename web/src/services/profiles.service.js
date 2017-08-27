@@ -82,7 +82,7 @@ export function GetProfiles(id) {
     return new Promise((resolve, reject) => {
       const resolvedProfileItems = mockProfiles
         .filter(({ userId }) => userId == id)
-        .map(({ id, name, typbreed }) => {
+        .map(({ id, name, typebreed }) => {
           /** @type {!PetProfileItem} */
           const item = new PetProfileItem();
 
@@ -106,7 +106,7 @@ export function GetProfile(userId, profileId) {
     return new Promise((resolve, reject) => {
       const resolvedProfiles = 
         mockProfiles.filter(({ id }) => id == profileId) || [];
-      const retrivedProfile = resolvedretrivedProfile.shift();
+      const retrivedProfile = resolvedProfiles.shift();
 
       if (typeof retrivedProfile == 'undefined') {
         reject();

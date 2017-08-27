@@ -14,14 +14,6 @@ export default class App extends Component {
     };
   }
 
-  loadProfiles() {
-    GetProfiles(0, 0).then((profiles) => {
-      this.setState((prevState, props) => {
-        return Object.assign(prevState, { profiles, });
-      });
-    });
-  }
-
   getSelectedProfile(e) {
     GetProfile(0, e).then((selectedProfile) => {
       this.setState((prevState, props) => {
@@ -31,7 +23,10 @@ export default class App extends Component {
   }
 
   render() {
-    const {profiles, selectedProfile} = this.state;
+    const {userId} = this.props;
+
+    console.log(`UserID is ${userId}`);
+
     return (
       <Router>
         <div id="App" className="app">  
@@ -39,19 +34,13 @@ export default class App extends Component {
             exact
             component={
               () => 
-                <HomePage profiles={profiles}
-                  clickHandler={this.loadProfiles.bind(this)}
-                  profileSelected={this.getSelectedProfile.bind(this)}
-                />
+                <HomePage userId={userId}/>
               }
           />
           <Route 
-            path="/profile"
-            component={
-              () => 
-               <ProfilePage profile={selectedProfile}/>
-            }
-          />
+            path="/profile/:profileid"
+            render={(props) => <ProfilePage {...props} userId={userId} />}
+           />
         </div>
       </Router>
     );

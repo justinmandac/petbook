@@ -1,28 +1,32 @@
-import React from 'react';
-import ProfileItem from './component.home.profile-item';
+import React, { Component } from 'react';
+import ProfileList from './component.home.profile-list';
+import {GetProfiles} from './services/profiles.service';
 
-export default function HomePage({
-  profiles = [],
-  clickHandler = () => {},
-  profileSelected = () => {}
-}) {
-  const ProfileRendered = 
-    profiles.map(({id, name, typebreed}) => 
-      <ProfileItem
-        key={id}
-        id={id}
-        name={name}
-        typebreed={typebreed}
-        onClick={profileSelected}
-      />
-    );
+export default class HomePage extends Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      profiles : [],
+    };
+  }
 
-  return (
-    <div className="home-page page">
-      <div className="profiles-list">
-        {ProfileRendered}
+  componentDidMount() {
+    const { userId } = this.props;
+
+    GetProfiles(userId).then((profiles) => {
+      this.setState((prevState, props) => {
+        return Object.assign(prevState, { profiles });
+      });
+    });
+  }
+
+  render() {
+    const { profiles = [] } = this.state;
+    
+    return (
+      <div className="home-page page">
+        <ProfileList profiles={profiles}  />
       </div>
-      <button onClick={clickHandler}>Load</button>
-    </div>
-  );
-};
+    );    
+  }
+}
