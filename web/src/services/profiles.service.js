@@ -12,7 +12,6 @@ const mockProfiles = [
       description: '',
       dietaryNotes: '',
       typebreed: 'Mongrel',
-      events: [],            
     },
     {
       id: 2,
@@ -23,7 +22,6 @@ const mockProfiles = [
       description: 'Black, fluffy, and annoying as hell',
       dietaryNotes: '',
       typebreed: 'Chow-chow',
-      events: [],            
     },
     {
       id: 3,
@@ -34,7 +32,6 @@ const mockProfiles = [
       description: 'Butt-ugly',
       dietaryNotes: '',
       typebreed: 'Mini Pinscher',
-      events: [],            
     },
 ];
 
@@ -62,8 +59,6 @@ PetProfile.prototype.description = '';
 
 /** @type {string} */
 PetProfile.prototype.dietaryNotes = '';
-
-PetProfile.prototype.events = [];
 
 /** @type {string} */
 PetProfile.prototype.profilePhoto = '';
