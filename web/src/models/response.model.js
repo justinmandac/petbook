@@ -20,7 +20,7 @@ export const ERR_CODES = {
 function Response({error, message = '', output = null} = {}) {    
   this.error = error;
   this.message = message;
-  this.output = output;
+  this.output = !!output ? Object.assign({}, output) : null;
 }
 
 /** @type {ERR_CODES} */

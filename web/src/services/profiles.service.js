@@ -2,43 +2,124 @@
  * @fileoverview API calls for retrieving profiles and profile data.
  */
 
+const mockProfiles = [
+    {
+      id: 1,
+      userId: 1,
+      name: 'Bochog',
+      birthday: '2010-11-05',
+      profilePhoto: '',
+      description: '',
+      dietaryNotes: '',
+      typebreed: 'Mongrel',
+      events: [],            
+    },
+    {
+      id: 2,
+      userId: 1,
+      name: 'Kong King',
+      birthday: '2015-01-01',
+      profilePhoto: '',
+      description: 'Black, fluffy, and annoying as hell',
+      dietaryNotes: '',
+      typebreed: 'Chow-chow',
+      events: [],            
+    },
+    {
+      id: 3,
+      userId: 1,
+      name: 'Blondie',
+      birthday: '2012-04-12',
+      profilePhoto: '',
+      description: 'Butt-ugly',
+      dietaryNotes: '',
+      typebreed: 'Mini Pinscher',
+      events: [],            
+    },
+];
+
+/** @constructor */
+export function PetProfileItem() {}
+
+/** @type {number} */
+PetProfileItem.prototype.id = -1;
+
+/** @type {string} */
+PetProfileItem.prototype.name = '';
+
+/** @type {string} */
+PetProfileItem.prototype.typebreed = '';
+
+/** @constructor */
+export function PetProfile() {}
+PetProfile.prototype = new PetProfileItem();
+
+/** @type {(!Date|string)} */
+PetProfile.prototype.birthday = '';
+
+/** @type {string} */
+PetProfile.prototype.description = '';
+
+/** @type {string} */
+PetProfile.prototype.dietaryNotes = '';
+
+PetProfile.prototype.events = [];
+
+/** @type {string} */
+PetProfile.prototype.profilePhoto = '';
+
+/** @type {numner} */
+PetProfile.prototype.userId = -1;
+
 /**
- * @param {number} userId
- * @return {!Promise<!Array>}
+ * Retrieves the list of pets owned by the user possessing the
+ * provided ID.
+ * 
+ * @param {number} id ID of the user/pet owner.
+ * @return {!Promise<!Array<!PetProfileItem>>}
 */
-export function GetProfiles(userId) {
+export function GetProfiles(id) {
     return new Promise((resolve, reject) => {
-        resolve([
-            {
-                id: 1,
-                name: 'Bochog',
-                typebreed: 'Mongrel',
-            },
-            {
-                id: 2,
-                name: 'Kongking',
-                typebreed: 'Chow Chow',
-            },
-        ]);
+      const resolvedProfileItems = mockProfiles
+        .filter(({ userId }) => userId == id)
+        .map(({ id, name, typbreed }) => {
+          /** @type {!PetProfileItem} */
+          const item = new PetProfileItem();
+
+          item.id = id;
+          item.name = name;
+          item.typebreed = typebreed;
+
+          return item;
+        });
+        
+        resolve(resolvedProfileItems);
     });
 }
 
 /**
  * @param {number} userId
  * @param {number} profileId
- * @return {!Promise<!Object>}
+ * @return {!Promise<(!Object|undefined)>}
 */
 export function GetProfile(userId, profileId) {
     return new Promise((resolve, reject) => {
-        resolve({
-            id: 1,
-            name: 'Bochog',
-            birthday: '2010-11-05',
-            profilePhoto: '',
-            description: '',
-            dietaryNotes: '',
-            typebreed: 'Mongrel',
-            events: [],            
-        });
+      const resolvedProfiles = 
+        mockProfiles.filter(({ id }) => id == profileId) || [];
+      const retrivedProfile = resolvedretrivedProfile.shift();
+
+      if (typeof retrivedProfile == 'undefined') {
+        reject();
+        return;
+      }
+
+      /** @type {!PetProfile} */
+      const profile = new PetProfile();
+
+      Object.keys(retrivedProfile).forEach((key) => {
+        profile[key] = retrivedProfile[key];
+      });
+
+      resolve(profile);
     });
 }

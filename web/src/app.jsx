@@ -23,7 +23,6 @@ export default class App extends Component {
   }
 
   getSelectedProfile(e) {
-    console.log(e);
     GetProfile(0, e).then((selectedProfile) => {
       this.setState((prevState, props) => {
         return Object.assign(prevState, { selectedProfile, });
@@ -32,7 +31,7 @@ export default class App extends Component {
   }
 
   render() {
-    const {profiles} = this.state;
+    const {profiles, selectedProfile} = this.state;
     return (
       <Router>
         <div id="App" className="app">  
@@ -50,7 +49,7 @@ export default class App extends Component {
             path="/profile"
             component={
               () => 
-               <ProfilePage />
+               <ProfilePage profile={selectedProfile}/>
             }
           />
         </div>
