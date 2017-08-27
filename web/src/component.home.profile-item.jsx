@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 export default function ProfileItem({
   id,
   name,
-  typebreed,
-  onClick = () => {}}) {
+  typebreed
+}) {
   
     return (
       <Link to={{
