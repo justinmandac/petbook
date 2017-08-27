@@ -36,7 +36,12 @@ export default class ProfilePage extends Component {
     return (
       <div className="profile-page page">
         <Link to={{ pathname: '/' }}>Back</Link>Profile
-        <ProfileHeader name={profile.name} />
+        <ProfileHeader name={profile.name} typebreed={profile.typebreed}/>
+        <div className="profile-details">
+          <div className="row">
+            Birthday: {profile.birthday}
+          </div>
+        </div>
       </div>
     );
   }
