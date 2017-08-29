@@ -4,6 +4,7 @@ import AppHeader from './app.header';
 
 import HomePage from './page.home';
 import ProfilePage from './page.profile';
+import ManagePetsPage from './page.manage-pets';
 
 import { HashRouter as Router, Route } from 'react-router-dom';
 
@@ -26,6 +27,10 @@ export default class App extends Component {
           <Route 
             path="/profile/:profileid"
             render={(props) => <ProfilePage {...props} userId={userId} />}
+           />
+          <Route 
+            path="/manage"
+            render={(props) => <ManagePetsPage {...props} userId={userId} />}
            />
         </div>
       </Router>
