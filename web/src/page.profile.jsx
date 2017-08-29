@@ -10,6 +10,7 @@ export default class ProfilePage extends Component {
     this.state = {
       profile: {},
       events: [],
+      photo: '',
     };
   }
 
@@ -43,7 +44,7 @@ export default class ProfilePage extends Component {
   }
 
   render() {
-    const { profile = {}, events = [] } = this.state;
+    const { profile = {}, events = [], photo = '' } = this.state;
     const eventsRendered = events.map((event) => {
       return (
         <div className="event-item" key={event.id}>
@@ -55,7 +56,11 @@ export default class ProfilePage extends Component {
     return (
       <div className="profile-page page">
         <Link to={{ pathname: '/' }}>Back</Link>Profile
-        <ProfileHeader name={profile.name} typebreed={profile.typebreed}/>
+        <ProfileHeader
+          name={profile.name}
+          typebreed={profile.typebreed}
+          profilePhoto={profile.profilePhoto}
+        />
         <div className="profile-details">
           <div className="row">
             Birthday: {profile.birthday}
