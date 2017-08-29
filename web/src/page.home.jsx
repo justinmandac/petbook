@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
-import ProfileList from './component.home.profile-list';
 import {GetProfiles} from './services/profiles.service';
+import {GetEvents} from './services/events.service';
 
 export default class HomePage extends Component{
   constructor(props) {
     super(props);
     this.state = {
       profiles : [],
+      events: [],
     };
   }
 
   componentDidMount() {
     const { userId } = this.props;
-
-    GetProfiles(userId).then((profiles) => {
-      this.setState((prevState, props) => {
-        return Object.assign(prevState, { profiles });
-      });
+    GetEvents(userId).then(events => {
+      this.setState((prevState, props) => Object.assign(prevState, {
+        events,
+      }));
     });
   }
 
@@ -25,7 +25,6 @@ export default class HomePage extends Component{
     
     return (
       <div className="home-page page">
-        <ProfileList profiles={profiles}  />
       </div>
     );    
   }

@@ -1,6 +1,7 @@
 /**
  * @fileoverview Events Service
 */
+import {GetProfiles} from './profiles.service';
 
 const mockPetEvents = [
   {
@@ -62,7 +63,11 @@ export function GetEvents(
   startDate,
   endDate,
   order = ORDER_VALUES.DESC) {
-
+  return GetProfiles(userId).then((profiles) => {
+    return mockPetEvents.find((event) => {
+      return profiles.map(p => p.id).indexOf(event.id) > -1;
+    });
+  });
 }
 
 /**
