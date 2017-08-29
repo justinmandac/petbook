@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {GetProfile} from './services/profiles.service';
+import {GetPetEvents} from './services/events.service';
 import {Link} from 'react-router-dom';
 import ProfileHeader from './component.profile.header';
 
@@ -8,9 +9,14 @@ export default class ProfilePage extends Component {
     super(props);
     this.state = {
       profile: {},
+      events: [],
     };
   }
 
+  /**
+   * Place page-specific initialization calls here. Note that componentDidMount
+   * will be called multiple times when the Route changes. 
+   */
   componentDidMount() {
     const { userId } = this.props;
     const { profileid: petId } = this.props.match.params;
@@ -20,7 +26,13 @@ export default class ProfilePage extends Component {
         return Object.assign(prevState, { profile });
       });
     });
-
+    
+    GetPetEvents(petId, new Date(), new Date()).then((events) => {
+      console.log(events);
+      this.setState((prevState, props) => {
+        return Object.assign(prevState, { events });
+      });
+    });
   }
 
   componentWillUnmount() {
@@ -31,8 +43,15 @@ export default class ProfilePage extends Component {
   }
 
   render() {
-    const { profile = {} } = this.state;
-    
+    const { profile = {}, events = [] } = this.state;
+    const eventsRendered = events.map((event) => {
+      return (
+        <div className="event-item" key={event.id}>
+          {event.title}
+        </div>
+      );
+    });
+
     return (
       <div className="profile-page page">
         <Link to={{ pathname: '/' }}>Back</Link>Profile
@@ -41,6 +60,9 @@ export default class ProfilePage extends Component {
           <div className="row">
             Birthday: {profile.birthday}
           </div>
+        </div>
+        <div className="events-list">
+          {eventsRendered}
         </div>
       </div>
     );
