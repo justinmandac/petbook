@@ -18,7 +18,9 @@ export default function ProfileItem({
         pathname :"/profile/" + id
       }} replace>
         <div className="profile-item" style={ProfileItemStyles}>
+          <div className="profile-item__info">
           {name}, {typebreed}
+          </div>
         </div>
       </Link>
   );
