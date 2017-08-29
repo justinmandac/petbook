@@ -61,6 +61,7 @@ export default class ProfilePage extends Component {
             Birthday: {profile.birthday}
           </div>
         </div>
+        <button>Add New Event</button>
         <div className="events-list">
           {eventsRendered}
         </div>
