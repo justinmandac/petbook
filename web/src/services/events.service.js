@@ -5,6 +5,7 @@
 const mockPetEvents = [
   {
     petId: 1,
+    id: 1,
     title: '5-in-1 Vaccination',
     location: 'Paraan Veterinary Clinic, Antipolo',
     datetime: '2017-09-14',
@@ -14,6 +15,7 @@ const mockPetEvents = [
   },
   {
     petId: 1,
+    id: 2,
     title: 'Bath',
     location: 'Home',
     datetime: '2017-09-01T11:00:00',
