@@ -64,10 +64,26 @@ export function GetEvents(
   endDate,
   order = ORDER_VALUES.DESC) {
   return GetProfiles(userId).then((profiles) => {
-    return mockPetEvents.find((event) => {
-      return profiles.map(p => p.id).indexOf(event.id) > -1;
+    // Attach events along with the pet profile they belong two.
+    return profiles.map((profile) => {
+      profile
+      return {
+        profile,
+        events: mockPetEvents.filter((event) => event.petId === profile.id),
+      };
+    });   
+  })
+  .then(events => events.map(({events, profile}) => {
+    return events.map((event) => {
+      event.profile = {
+        id: profile.id,
+        name: profile.name,
+        typebreed: profile.typebreed,
+      };
+      return event; 
     });
-  });
+  }))
+  .then((events) => events.reduce((acc, curr) => acc.concat(curr)), [])
 }
 
 /**
