@@ -47,6 +47,9 @@ PetProfileItem.prototype.name = '';
 /** @type {string} */
 PetProfileItem.prototype.typebreed = '';
 
+/** @type {string} */
+PetProfile.prototype.profilePhoto = '';
+
 /** @constructor */
 export function PetProfile() {}
 PetProfile.prototype = new PetProfileItem();
@@ -59,9 +62,6 @@ PetProfile.prototype.description = '';
 
 /** @type {string} */
 PetProfile.prototype.dietaryNotes = '';
-
-/** @type {string} */
-PetProfile.prototype.profilePhoto = '';
 
 /** @type {numner} */
 PetProfile.prototype.userId = -1;
