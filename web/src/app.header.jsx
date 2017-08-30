@@ -1,8 +1,8 @@
 import React from 'react';
 
-const AppHeader = () => (
+const AppHeader = ({onTriggerClicked = () => {}}) => (
   <header>
-    Header
+    <button onClick={onTriggerClicked}>=</button> Header
   </header>
 );
 
