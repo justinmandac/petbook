@@ -80,6 +80,7 @@ export function GetEvents(
         id: profile.id,
         name: profile.name,
         typebreed: profile.typebreed,
+        profilePhoto: profile.profilePhoto,
       };
       return event; 
     });
