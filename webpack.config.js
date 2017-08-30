@@ -13,6 +13,10 @@ const config = {
         exclude: path.resolve(__dirname, 'node_modules'),
         loader: 'babel-loader',
       },
+      {
+        test: /\.scss$/,
+        loader: 'style-loader!css-loader!sass-loader',
+      }
     ]
   },
   plugins: [
