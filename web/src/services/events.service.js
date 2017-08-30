@@ -74,6 +74,7 @@ export function GetEvents(
     });   
   })
   .then(events => events.map(({events, profile}) => {
+    // Attach profile data to each event data. 
     return events.map((event) => {
       event.profile = {
         id: profile.id,
@@ -83,6 +84,7 @@ export function GetEvents(
       return event; 
     });
   }))
+  // Reduce all events in a single array.
   .then((events) => events.reduce((acc, curr) => acc.concat(curr)), [])
 }
 
