@@ -7,6 +7,7 @@ export default function EventsList({events = []}) {
       <EventsListItem
         key={event.id}
         title={event.title}
+        date={event.datetime}
         profile={event.profile}
       />);
       
