@@ -1,7 +1,7 @@
 import React from 'react';
 
 const AppHeader = ({onTriggerClicked = () => {}}) => (
-  <header>
+  <header className="header">
     <button onClick={onTriggerClicked}>=</button> Header
   </header>
 );
