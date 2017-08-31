@@ -4,9 +4,12 @@ export default function AppDrawer({opened = false}) {
   return (
     <aside className={`drawer ${opened ? 'opened' : ''}`}>
       <ul>
-        <li>Home</li>
-        <li>My Pets</li>
-        <li>Settings</li>
+        <li>
+          Profile
+        </li>
+        <li>
+          Log Out
+        </li>
       </ul>  
     </aside>
   )
