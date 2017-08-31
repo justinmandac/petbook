@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 import AppHeader from './app.header';
-
+import AppDrawer from './app.drawer';
 import HomePage from './page.home';
 import ProfilePage from './page.profile';
 import ManagePetsPage from './page.manage-pets';
@@ -35,6 +35,7 @@ export default class App extends Component {
             opened={this.state.sidebarVisible}
             onTriggerClicked={this.onTriggerClicked.bind(this)}
           />
+          <AppDrawer opened={this.state.sidebarVisible} />
           <Route path="/"
             exact
             component={() => <HomePage userId={userId}/>}
