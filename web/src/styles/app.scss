@@ -1,5 +1,11 @@
+$header-height: 44px;
+
 *, *::before, *::after {
   box-sizing: border-box;
+}
+
+#AppRoot {
+  position: relative;
 }
 
 html, body {
@@ -7,3 +13,22 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
+.header {
+  height: $header-height;
+}
+
+.drawer {
+  background-color: #434343;
+  height: calc(100vh - #{$header-height});
+  position: absolute;
+  top: $header-height;
+  left: 0;
+  width: 100vw;
+  transform: translateX(-100%);
+
+  &.opened {
+    transform: translateX(0%);
+  }
+}
+
