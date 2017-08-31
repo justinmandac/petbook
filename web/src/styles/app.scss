@@ -4,7 +4,8 @@ $header-height: 44px;
   box-sizing: border-box;
 }
 
-#AppRoot {
+#App {
+  min-height: 100vh;
   position: relative;
 }
 
@@ -26,9 +27,26 @@ html, body {
   left: 0;
   width: 100vw;
   transform: translateX(-100%);
-
+  
   &.opened {
     transform: translateX(0%);
   }
 }
 
+.bottom-bar {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  
+  > ul {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-basis: row;
+
+    > li {
+      flex: 1;
+      text-align: center;
+    }
+  }
+}

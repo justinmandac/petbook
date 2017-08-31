@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 import AppHeader from './app.header';
+import AppBottomBar from './app.bottom-bar';
 import AppDrawer from './app.drawer';
 import HomePage from './page.home';
 import ProfilePage from './page.profile';
@@ -48,6 +49,7 @@ export default class App extends Component {
             path="/manage"
             render={(props) => <ManagePetsPage {...props} userId={userId} />}
            />
+           <AppBottomBar />
         </div>
       </Router>
     );
