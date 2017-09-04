@@ -55,13 +55,17 @@ html, body {
   position: fixed;
   width: 100%;
   bottom: 0;
-  box-shadow: 0  4px 12px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0  4px 12px 4px rgba(0, 0, 0, 0.1);
 
   > ul {
     list-style: none;
     padding-left: 0;
     display: flex;
     flex-basis: row;
+
+    a {
+      text-decoration: none;
+    }
 
     > li {
       flex: 1;
