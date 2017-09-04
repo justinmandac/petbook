@@ -33,6 +33,24 @@ html, body {
   }
 }
 
+.events-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.events-list-item {
+  border-radius: 5px;
+  height: 64px;
+  padding: 4px;
+}
+
+.home-page {
+  .events-list-item {
+    margin: 0 8px 12px 8px;
+    box-shadow: 0 0 8px 0px rgba(0,0,0, 0.1);
+  }
+}
+
 .bottom-bar {
   position: fixed;
   width: 100%;
